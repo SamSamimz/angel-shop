@@ -45,7 +45,7 @@
                       </div>
                       <div class="form-group">
                           <label for="description">Description :</label>
-                          <textarea name="description" id="description" class="form-control" placeholder="Category description..." cols="30" rows="3">value="{{old('description')}}"</textarea>
+                          <textarea name="description" id="description" class="form-control" placeholder="Category description..." cols="30" rows="3">{{old('description')}}</textarea>
                           @error('description')
                           <p class="text-danger">{{$message}}</p>
                           @enderror

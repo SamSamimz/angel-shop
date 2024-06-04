@@ -37,40 +37,50 @@
                     <tr>
                         <th>{{__('S.N.')}}</th>
                         <th>{{__('Name')}}</th>
-                        <th>{{__('Description')}}</th>
-                        <th>{{__('Meta Title')}}</th>
-                        <th>{{__('Meta Keywords')}}</th>
+                        <th>{{__('Small_Description')}}</th>
+                        <th>{{__('Regular Price')}}</th>
+                        <th>{{__('Selling Price')}}</th>
                         <th>{{__('Image')}}</th>
+                        <th>{{__('Quantity')}}</th>
                         <th>{{__('Status')}}</th>
-                        <th>{{__('Popular')}}</th>
+                        <th>{{__('Tax')}}</th>
+                        <th>{{__('Trending')}}</th>
+                        <th>{{__('Meta_Title')}}</th>
+                        <th>{{__('Meta_Description')}}</th>
+                        <th>{{__('Meta_Keywords')}}</th>
                         <th>{{__('Action')}}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {{-- @forelse ($categories as $index => $category)
+                    @forelse ($products as $index => $product)
                     <tr>
                         <td>{{++$index}}</td>
-                        <td>{{$category->name}}</td>
-                        <td>{{Str::limit($category->description,25)}}</td>
-                        <td>{{$category->meta_title}}</td>
-                        <td style="max-width: 25px;overflow:auto">{{$category->meta_keywords}}</td>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->small_description}}</td>
+                        <td>{{$product->regular_price}}</td>
+                        <td>{{$product->selling_price}}</td>
                         <td>
-                            <img src="{{$category->getImage()}}" alt="{{$category->image}}">
+                          <img src="{{$product->getImage()}}" alt="{{$product->getImage()}}">
                         </td>
-                        <td>{{$category->status ? 'Active' : 'Inactive'}}</td>
-                        <td>{{$category->popular}}</td>
+                        <td>{{$product->qty}}</td>
+                        <td>{{$product->status ? "Active" : "Inactive"}}</td>
+                        <td>{{$product->tax}}</td>
+                        <td>{{$product->trending ? 'Yes' : 'NO'}}</td>
+                        <td>{{$product->meta_title}}</td>
+                        <td>{{$product->meta_description}}</td>
+                        <td>{{$product->meta_keywords}}</td>
                         <td>
-                            <a class="btn btn-primary" href="{{route('categories.edit',$category->slug)}}">Edit</a>
+                            <a class="btn btn-primary" href="{{route('products.edit',$product)}}">Edit</a>
                             <a class="btn btn-info" href="">View</a>
                             <a class="btn btn-danger" onclick="document.getElementById('deleteForm').submit()">Delete</a>
-                            <form action="{{route('categories.destroy',$category)}}" method="POST" id="deleteForm">
+                            <form action="{{route('products.destroy',$product)}}" method="POST" id="deleteForm">
                                 @csrf
                                 @method('DELETE')
                             </form>
                         </td>
                     </tr>
                     @empty
-                    @endforelse --}}
+                    @endforelse
                   </tbody>
                 </table>
               </div>
